@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/02 08:21:42 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/02 08:51:55 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int	main(int ac, char **av)
 	}
 	while ((dent = readdir(dir)) != NULL)
 	{
-		ft_putstr_fd(dent->d_name, 1);
-		ft_putstr_fd("\n", 1);
+		if (dent->d_name[0] != '.')
+		{
+			ft_putstr_fd(dent->d_name, 1);
+			ft_putstr_fd("\n", 1);
+		}
 	}
 	closedir(dir);
 	return (0);
