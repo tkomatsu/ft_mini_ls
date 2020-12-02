@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:45:09 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/02 08:17:33 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/02 11:31:55 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <dirent.h>
 # include <sys/stat.h>
 # include <stdio.h>
-
-size_t			ft_strlen(const char *s);
-void			ft_putstr_fd(char *s, int fd);
+# include "libft.h"
 
 #endif
