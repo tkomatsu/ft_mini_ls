@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 21:18:44 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/03 17:51:05 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/03 18:38:51 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ int	cmp_time(t_info *a, t_info *b) {
 
 t_list	*ft_merge(t_list *a, t_list *b)
 {
-	t_list	*result;
+	t_list	result;
 	t_list	*x;
 
+	/*
 	puts("\033[31mft_merge\033[39m");
 	puts("a *******");
 	ft_lstiter(a, ft_print_dir);
 	puts("b *******");
 	ft_lstiter(b, ft_print_dir);
-	x = ft_calloc(sizeof(t_list), 1);
-	result = x;
+	*/
+	x = &result;
 	while (a != NULL && b != NULL)
 	{
 		if (cmp_time(a->content, b->content) > 0)
@@ -58,9 +59,11 @@ t_list	*ft_merge(t_list *a, t_list *b)
 		x->next = b;
 	else
 		x->next = a;
-	puts("x *******");
-	ft_lstiter(result->next, ft_print_dir);
-	return (result->next);
+	/*
+	puts("result.next *******");
+	ft_lstiter(result.next, ft_print_dir);
+	*/
+	return (result.next);
 }
 
 t_list	*ft_mergesort(t_list *lst)
@@ -97,13 +100,13 @@ t_list	*ft_mergesort(t_list *lst)
 	return (ft_merge(ft_mergesort(lst), ft_mergesort(x))); //lstは先頭、bは中央の次のnode
 }
 
-void	ft_lstsort(t_list *lst)
+void	ft_lstsort(t_list **lst)
 {
 	t_list	*result;
 
-	if (!lst)
+	if (!lst || !*lst)
 		return;
-	result = ft_mergesort(lst->next);
-	lst->next = result;
+	result = ft_mergesort(*lst);
+	*lst = result;
 }
 
