@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 21:18:44 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/03 18:54:32 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/03 19:32:25 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 
 int		cmp_time(t_info *a, t_info *b)
 {
-	if (a->stat.st_mtimespec.tv_sec >= b->stat.st_mtimespec.tv_sec)
+	if (a->stat.st_mtimespec.tv_sec > b->stat.st_mtimespec.tv_sec)
 		return (1);
+	else if (a->stat.st_mtimespec.tv_sec == b->stat.st_mtimespec.tv_sec)
+	{
+		if (a->stat.st_mtimespec.tv_nsec > b->stat.st_mtimespec.tv_nsec)
+			return (1);
+		else if (a->stat.st_mtimespec.tv_nsec == b->stat.st_mtimespec.tv_nsec)
+		{
+			if (strcmp(a->name, b->name) < 0)
+				return (1);
+		}
+	}
 	return (0);
 }
 
