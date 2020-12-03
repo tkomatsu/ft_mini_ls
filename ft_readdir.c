@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 21:16:36 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/03 08:58:16 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/03 18:52:05 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_info	*read_finfo(struct dirent *dent)
 	return (info);
 }
 
-t_list	*ft_readdir(DIR *dir)
+t_list			*ft_readdir(DIR *dir)
 {
 	t_list			*infolist;
 	struct dirent	*dent;
