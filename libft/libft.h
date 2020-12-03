@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 21:45:47 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/11/24 12:05:36 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/04 07:54:29 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
-int				ft_isspace(int c);	
+int				ft_isspace(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 
@@ -127,6 +127,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 ** *****************************************************************************
 */
 
-int			get_next_line(int fd, char **line);
+int				get_next_line(int fd, char **line);
 
 #endif

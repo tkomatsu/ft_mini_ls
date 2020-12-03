@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 16:28:11 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/09/01 16:34:33 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/04 07:52:53 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ double	ft_atof(const char *s)
 	}
 	return (sign * val / power);
 }
-
