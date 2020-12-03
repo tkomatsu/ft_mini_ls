@@ -2,7 +2,8 @@ NAME = ft_mini_ls
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 FLAGS = -lm -L libft -lft
-SRCS = ft_lstsort.c \
+SRCS = ft_delinfo.c \
+	   ft_lstsort.c \
 	   ft_mini_ls.c \
 	   ft_print_dir.c \
 	   ft_readdir.c

@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mini_ls.c                                       :+:      :+:    :+:   */
+/*   ft_delinfo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/04 07:49:33 by tkomatsu         ###   ########.fr       */
+/*   Created: 2020/12/04 07:45:33 by tkomatsu          #+#    #+#             */
+/*   Updated: 2020/12/04 07:47:53 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mini_ls.h"
 
-int	main(int ac, char **av)
+void	ft_delinfo(void *l)
 {
-	t_list	*infolist;
-	DIR		*dir;
+	t_info	*info;
 
-	if (ac > 1)
-	{
-		ft_putstr_fd(ft_strjoin(av[1], ": bad argument\n"), 2);
-		return (1);
-	}
-	dir = opendir("./");
-	infolist = ft_readdir(dir);
-	ft_lstsort(&infolist);
-	ft_lstiter(infolist, ft_print_dir);
-	ft_lstclear(&infolist, ft_delinfo);
-	return (0);
+	info = (t_info*)l;
+	free(info->name);
+	free(l);
 }
