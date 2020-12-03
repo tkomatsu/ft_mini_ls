@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 21:16:36 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/03 20:15:16 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/04 07:50:55 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_info	*read_finfo(struct dirent *dent)
 	path = ft_strjoin("./", dent->d_name);
 	if (!info || !path || lstat(path, &dent_stat))
 		return (NULL);
-	if	(!(info->name = ft_strdup(dent->d_name)))
+	if (!(info->name = ft_strdup(dent->d_name)))
 		return (NULL);
 	info->namlen = dent->d_namlen;
 	info->stat = dent_stat;
