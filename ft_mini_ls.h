@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:45:09 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/02 22:34:17 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/03 10:47:47 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef struct	s_info
 	struct stat stat;
 }				t_info;
 
-t_list	*ft_readdir(DIR *dir, int *count);
-void	ft_lstsort(t_list *lst, void (*f)(t_list *), int cnt);
-void	ft_lstswap(t_list *lst);
+t_list	*ft_readdir(DIR *dir);
+void	ft_lstsort(t_list *lst);
 void	ft_print_dir(void *finfo);
+int	cmp_time(t_info *a, t_info *b);
 
 #endif

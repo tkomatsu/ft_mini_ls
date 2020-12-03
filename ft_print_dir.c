@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 21:18:14 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/03 08:13:54 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/03 15:57:28 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	ft_print_dir(void *arg)
 	ft_putstr_fd(info->name, 1);
 	ft_putchar_fd('\n', 1);
 	*/
-	printf("%15s	:%lu\n", info->name, info->stat.st_mtimespec.tv_sec);
+	printf("%15s :%lu\n", info->name, info->stat.st_mtimespec.tv_sec);
 }
