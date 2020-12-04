@@ -2,3 +2,5 @@ test/
 *.o
 *.a
 ft_mini_ls
+a.out
+*.dSYM/

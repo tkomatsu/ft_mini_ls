@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 21:16:36 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/04 07:50:55 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/04 21:39:49 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static t_info	*read_finfo(struct dirent *dent)
 		return (NULL);
 	info->namlen = dent->d_namlen;
 	info->stat = dent_stat;
+	free(path);
 	return (info);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/04 07:49:33 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/04 21:40:19 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	main(int ac, char **av)
 	ft_lstsort(&infolist);
 	ft_lstiter(infolist, ft_print_dir);
 	ft_lstclear(&infolist, ft_delinfo);
+	closedir(dir);
 	return (0);
 }
