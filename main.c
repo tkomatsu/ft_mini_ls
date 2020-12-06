@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/06 15:25:57 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/06 15:29:26 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_list	*ft_readdir(DIR *dir)
 	t_list			*list;
 	struct dirent	*dent;
 	t_info			*info;
-	char		*path;
-	struct stat	dent_stat;
+	char			*path;
+	struct stat		dent_stat;
 
 	list = NULL;
 	while ((dent = readdir(dir)) != NULL)
@@ -56,6 +56,7 @@ t_list	*ft_readdir(DIR *dir)
 	}
 	return (list);
 }
+
 int		cmp_time(void *va, void *vb)
 {
 	t_info	*a;
