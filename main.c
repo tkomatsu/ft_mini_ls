@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/06 10:01:45 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/06 15:13:54 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,13 @@ t_list			*ft_readdir(DIR *dir)
 	}
 	return (list);
 }
-
 int		cmp_time(void *va, void *vb)
 {
-	size_t	len;
 	t_info	*a;
 	t_info	*b;
 
 	a = (t_info*)va;
 	b = (t_info*)vb;
-	len = (a->namlen > b->namlen ? b->namlen : a->namlen); 
 	if (a->stat.st_mtimespec.tv_sec > b->stat.st_mtimespec.tv_sec)
 		return (1);
 	else if (a->stat.st_mtimespec.tv_sec == b->stat.st_mtimespec.tv_sec)
@@ -82,7 +79,7 @@ int		cmp_time(void *va, void *vb)
 			return (1);
 		else if (a->stat.st_mtimespec.tv_nsec == b->stat.st_mtimespec.tv_nsec)
 		{
-			if (ft_strncmp(a->name, b->name, len) < 0)
+			if (ft_strcmp(a->name, b->name) < 0)
 				return (1);
 		}
 	}
