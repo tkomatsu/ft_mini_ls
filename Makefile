@@ -2,11 +2,7 @@ NAME = ft_mini_ls
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 FLAGS = -lm -L libft -lft
-SRCS = ft_delinfo.c \
-	   ft_lstsort.c \
-	   ft_mini_ls.c \
-	   ft_print_dir.c \
-	   ft_readdir.c
+SRCS = main.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -26,4 +22,3 @@ fclean:
 re: fclean $(NAME)
 
 .PHONY	: all clean fclean re
-HONY: all clean fclean re
