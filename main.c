@@ -6,19 +6,11 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/06 15:13:54 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/06 15:25:57 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mini_ls.h"
-
-static int ft_puterr(char *str, int errno)
-{
-	ft_putstr_fd(str, 2);
-	ft_putstr_fd(": ", 2);
-	ft_putstr_fd(strerror(errno), 2);
-	return (1);
-}
 
 void	ft_delinfo(void *l)
 {
@@ -37,7 +29,7 @@ void	ft_print_dir(void *arg)
 	ft_putendl_fd(info->name, 1);
 }
 
-t_list			*ft_readdir(DIR *dir)
+t_list	*ft_readdir(DIR *dir)
 {
 	t_list			*list;
 	struct dirent	*dent;
@@ -86,7 +78,7 @@ int		cmp_time(void *va, void *vb)
 	return (0);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_list	*infolist;
 	DIR		*dir;
