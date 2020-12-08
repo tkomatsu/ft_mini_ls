@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/06 15:29:26 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/08 20:39:10 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_print_dir(void *arg)
 	t_info *info;
 
 	info = (t_info*)arg;
-	ft_putendl_fd(info->name, 1);
+	ft_putendl_fd(info->name + 2, 1);
 }
 
 t_list	*ft_readdir(DIR *dir)
@@ -40,17 +40,16 @@ t_list	*ft_readdir(DIR *dir)
 	list = NULL;
 	while ((dent = readdir(dir)) != NULL)
 	{
-		if (dent->d_name[0] != '.')
+		if (!(path = ft_strjoin("./", dent->d_name)))
+			return (NULL);
+		if (path[2] != '.')
 		{
-			info = ft_calloc(sizeof(t_info), 1);
-			path = ft_strjoin("./", dent->d_name);
-			if (!info || !path || lstat(path, &dent_stat))
+			info = malloc(sizeof(t_info));
+			if (!info || lstat(path, &dent_stat))
 				return (NULL);
-			if (!(info->name = ft_strdup(dent->d_name)))
-				return (NULL);
+			info->name = path;
 			info->namlen = dent->d_namlen;
 			info->stat = dent_stat;
-			free(path);
 			ft_lstadd_back(&list, ft_lstnew(info));
 		}
 	}
@@ -93,5 +92,5 @@ int		main(int ac, char **av)
 	ft_lstiter(infolist, ft_print_dir);
 	ft_lstclear(&infolist, ft_delinfo);
 	closedir(dir);
-	return (0);
+	return (EXIT_SUCCESS);
 }
