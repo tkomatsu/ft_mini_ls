@@ -6,27 +6,18 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:01:43 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/08 20:39:10 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/08 21:02:21 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mini_ls.h"
-
-void	ft_delinfo(void *l)
-{
-	t_info	*info;
-
-	info = (t_info*)l;
-	free(info->name);
-	free(l);
-}
 
 void	ft_print_dir(void *arg)
 {
 	t_info *info;
 
 	info = (t_info*)arg;
-	ft_putendl_fd(info->name + 2, 1);
+	ft_putendl_fd(info->name, 1);
 }
 
 t_list	*ft_readdir(DIR *dir)
@@ -34,21 +25,17 @@ t_list	*ft_readdir(DIR *dir)
 	t_list			*list;
 	struct dirent	*dent;
 	t_info			*info;
-	char			*path;
 	struct stat		dent_stat;
 
 	list = NULL;
-	while ((dent = readdir(dir)) != NULL)
+	while ((dent = readdir(dir)))
 	{
-		if (!(path = ft_strjoin("./", dent->d_name)))
-			return (NULL);
-		if (path[2] != '.')
+		if (*(dent->d_name) != '.')
 		{
 			info = malloc(sizeof(t_info));
-			if (!info || lstat(path, &dent_stat))
+			if (!info || lstat(dent->d_name, &dent_stat))
 				return (NULL);
-			info->name = path;
-			info->namlen = dent->d_namlen;
+			ft_strlcpy(info->name, dent->d_name, __DARWIN_MAXPATHLEN);
 			info->stat = dent_stat;
 			ft_lstadd_back(&list, ft_lstnew(info));
 		}
@@ -90,7 +77,7 @@ int		main(int ac, char **av)
 	infolist = ft_readdir(dir);
 	ft_lstsort(&infolist, cmp_time);
 	ft_lstiter(infolist, ft_print_dir);
-	ft_lstclear(&infolist, ft_delinfo);
+	ft_lstclear(&infolist, free);
 	closedir(dir);
 	return (EXIT_SUCCESS);
 }

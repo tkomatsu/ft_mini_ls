@@ -6,7 +6,7 @@
 /*   By: tkomatsu <tkomatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 07:45:09 by tkomatsu          #+#    #+#             */
-/*   Updated: 2020/12/06 07:22:09 by tkomatsu         ###   ########.fr       */
+/*   Updated: 2020/12/08 21:02:25 by tkomatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@
 
 typedef struct	s_info
 {
-	char		*name;
-	size_t		namlen;
+	char		name[__DARWIN_MAXPATHLEN];
 	struct stat stat;
 }				t_info;
 
 t_list			*ft_readdir(DIR *dir);
 void			ft_print_dir(void *finfo);
-void			ft_delinfo(void *l);
 
 #endif
